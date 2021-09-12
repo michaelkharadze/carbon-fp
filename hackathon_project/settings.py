@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '22efv*92xn2&)=g_o7ns*ntf1)r12op@3o7%b+nu0-=@15^j@4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['hackathonclimate.herokuapp.com']
 
