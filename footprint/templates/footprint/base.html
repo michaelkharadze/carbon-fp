@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{% static 'footprint/main.js' %}"></script>
+    <link href="{% static 'footprint/main.css' %}" rel="stylesheet" type="text/css">
+    {% if title %}
+        <title>{{ title }} | ნახშირბადის კვალი</title>
+    {% else %}
+        <title>ნახშირბადის კვალი</title>
+    {% endif %}
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="#">ნახშირბადის კვალი</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+              {% if homePage %}
+              <li class="active"><a href="{% url 'footprint-home' %}">მთავარი</a></li>
+              <li><a href="{% url 'footprint-about' %}">შესახებ</a></li>
+              <li><a href="{% url 'footprint-contact' %}">კონტაქტი</a></li>
+              {% endif %}
+              {% if aboutPage %}
+              <li><a href="{% url 'footprint-home' %}">მთავარი</a></li>
+              <li class="active"><a href="{% url 'footprint-about' %}">შესახებ</a></li>
+              <li><a href="{% url 'footprint-contact' %}">კონტაქტი</a></li>
+              {% endif %}
+              {% if contactPage %}
+              <li><a href="{% url 'footprint-home' %}">მთავარი</a></li>
+              <li><a href="{% url 'footprint-about' %}">შესახებ</a></li>
+              <li class="active"><a href="{% url 'footprint-contact' %}">კონტაქტი</a></li>
+              {% endif %}
+              {% if not homePage and not aboutPage and not contactPage %}
+              <li class="active"><a href="{% url 'footprint-home' %}">მთავარი</a></li>
+              <li><a href="{% url 'footprint-about' %}">შესახებ</a></li>
+              <li><a href="{% url 'footprint-contact' %}">კონტაქტი</a></li>
+              {% endif %}
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">წყაროები <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Page 1-1</a></li>
+                  <li><a href="#">Page 1-2</a></li>
+                  <li><a href="#">Page 1-3</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,116 @@
+{% extends 'footprint/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="content-section">
+    <form method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">ნახშირბადის კვალი</legend>
+        {{ form|crispy }}
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">გამოთვლა</button>
+      </div>
+    </form>
+  </div>
+  <script>
+    document.getElementById("div_id_heatingOilUsed").style.display = "none";
+    document.getElementById("div_id_coalUsed").style.display = "none";
+    document.getElementById("div_id_woodUsed").style.display = "none";
+    document.getElementById("div_id_bottledGasUsed").style.display = "none";
+    document.getElementById("div_id_carOneSize").style.display = "none";
+    document.getElementById("div_id_carOneMileage").style.display = "none";
+    document.getElementById("div_id_carTwoSize").style.display = "none";
+    document.getElementById("div_id_carTwoMileage").style.display = "none";
+    document.getElementById("div_id_carThreeSize").style.display = "none";
+    document.getElementById("div_id_carThreeMileage").style.display = "none";
+    document.getElementById("div_id_carFourSize").style.display = "none";
+    document.getElementById("div_id_carFourMileage").style.display = "none";
+    document.getElementById("id_heatingGasUsed").onchange = function() {
+      if(document.getElementById('id_heatingGasUsed').value == 0) {
+        console.log("Hi");
+        document.getElementById("id_heatingOilUsed").value = "";
+        document.getElementById("id_coalUsed").value = "";
+        document.getElementById("id_woodUsed").value = "";
+        document.getElementById("id_bottledGasUsed").value = "";
+        document.getElementById("div_id_heatingOilUsed").style.display = "none";
+        document.getElementById("div_id_coalUsed").style.display = "none";
+        document.getElementById("div_id_woodUsed").style.display = "none";
+        document.getElementById("div_id_bottledGasUsed").style.display = "none";
+      } else {
+        document.getElementById("div_id_heatingOilUsed").style.display = "block";
+        document.getElementById("div_id_coalUsed").style.display = "block";
+        document.getElementById("div_id_woodUsed").style.display = "block";
+        document.getElementById("div_id_bottledGasUsed").style.display = "block";
+      }
+    };
+    document.getElementById("id_carsAmount").onchange = function() {
+      if(document.getElementById("id_carsAmount").value == 0) {
+        document.getElementById("div_id_carOneSize").value = "";
+        document.getElementById("div_id_carOneMileage").value = "";
+        document.getElementById("div_id_carTwoSize").value = "";
+        document.getElementById("div_id_carTwoMileage").value = "";
+        document.getElementById("div_id_carThreeSize").value = "";
+        document.getElementById("div_id_carThreeMileage").value = "";
+        document.getElementById("div_id_carFourSize").value = "";
+        document.getElementById("div_id_carFourMileage").value = "";
+        document.getElementById("div_id_carOneSize").style.display = "none";
+        document.getElementById("div_id_carOneMileage").style.display = "none";
+        document.getElementById("div_id_carTwoSize").style.display = "none";
+        document.getElementById("div_id_carTwoMileage").style.display = "none";
+        document.getElementById("div_id_carThreeSize").style.display = "none";
+        document.getElementById("div_id_carThreeMileage").style.display = "none";
+        document.getElementById("div_id_carFourSize").style.display = "none";
+        document.getElementById("div_id_carFourMileage").style.display = "none";
+      } else if(document.getElementById("id_carsAmount").value == 1) {
+        document.getElementById("div_id_carTwoSize").value = "";
+        document.getElementById("div_id_carTwoMileage").value = "";
+        document.getElementById("div_id_carThreeSize").value = "";
+        document.getElementById("div_id_carThreeMileage").value = "";
+        document.getElementById("div_id_carFourSize").value = "";
+        document.getElementById("div_id_carFourMileage").value = "";
+        document.getElementById("div_id_carOneSize").style.display = "block";
+        document.getElementById("div_id_carOneMileage").style.display = "block";
+        document.getElementById("div_id_carTwoSize").style.display = "none";
+        document.getElementById("div_id_carTwoMileage").style.display = "none";
+        document.getElementById("div_id_carThreeSize").style.display = "none";
+        document.getElementById("div_id_carThreeMileage").style.display = "none";
+        document.getElementById("div_id_carFourSize").style.display = "none";
+        document.getElementById("div_id_carFourMileage").style.display = "none";
+      } else if(document.getElementById("id_carsAmount").value == 2) {
+        document.getElementById("div_id_carThreeSize").value = "";
+        document.getElementById("div_id_carThreeMileage").value = "";
+        document.getElementById("div_id_carFourSize").value = "";
+        document.getElementById("div_id_carFourMileage").value = "";
+        document.getElementById("div_id_carOneSize").style.display = "block";
+        document.getElementById("div_id_carOneMileage").style.display = "block";
+        document.getElementById("div_id_carTwoSize").style.display = "block";
+        document.getElementById("div_id_carTwoMileage").style.display = "block";
+        document.getElementById("div_id_carThreeSize").style.display = "none";
+        document.getElementById("div_id_carThreeMileage").style.display = "none";
+        document.getElementById("div_id_carFourSize").style.display = "none";
+        document.getElementById("div_id_carFourMileage").style.display = "none";
+      } else if(document.getElementById("id_carsAmount").value == 3) {
+        document.getElementById("div_id_carFourSize").value = "";
+        document.getElementById("div_id_carFourMileage").value = "";
+        document.getElementById("div_id_carOneSize").style.display = "block";
+        document.getElementById("div_id_carOneMileage").style.display = "block";
+        document.getElementById("div_id_carTwoSize").style.display = "block";
+        document.getElementById("div_id_carTwoMileage").style.display = "block";
+        document.getElementById("div_id_carThreeSize").style.display = "block";
+        document.getElementById("div_id_carThreeMileage").style.display = "block";
+        document.getElementById("div_id_carFourSize").style.display = "none";
+        document.getElementById("div_id_carFourMileage").style.display = "none";
+      } else if(document.getElementById("id_carsAmount").value == 4) {
+        document.getElementById("div_id_carOneSize").style.display = "block";
+        document.getElementById("div_id_carOneMileage").style.display = "block";
+        document.getElementById("div_id_carTwoSize").style.display = "block";
+        document.getElementById("div_id_carTwoMileage").style.display = "block";
+        document.getElementById("div_id_carThreeSize").style.display = "block";
+        document.getElementById("div_id_carThreeMileage").style.display = "block";
+        document.getElementById("div_id_carFourSize").style.display = "block";
+        document.getElementById("div_id_carFourMileage").style.display = "block";
+      }
+    };
+  </script>
+{% endblock content %}
