@@ -1,57 +1,52 @@
 {% extends "footprint/base.html" %}
 {% load mathfilters %}
+{% load i18n %}
 {% block content %}
   <article class="content-section">
-    <h1>თქვენი ნახშირბადის კვალია: <span class="carbon-footprint-answer">{{ post.totalAmount }}</span> ტონა</h1>
-    <h1>მსოფლიოს მოსახლეობის საშუალო ნახშირბადის კვალია: <span class="carbon-footprint-answer">4.4</span> ტონა</h1>
-    <h2>ყველა რომ თქვენსავით ცხოვრობდეს დაგვჭირდებოდა <span class="carbon-footprint-answer">{{ post.planetsAmount }} დედამიწა</span></h2>
+    <h3>{% trans "თქვენი ნახშირბადის კვალია:" %} <span class="carbon-footprint-answer">{{ post.totalAmount }}</span> {% trans "ტონა" %}</h3>
+    <h3>{% trans "მსოფლიოს მოსახლეობის საშუალო ნახშირბადის კვალია:" %} <span class="carbon-footprint-answer">4.4</span> {% trans "ტონა" %}</h3>
+    <h3>{% trans "ყველა რომ თქვენსავით ცხოვრობდეს დაგვჭირდებოდა" %} <span class="carbon-footprint-answer">{{ post.planetsAmount }} {% trans "დედამიწა" %}</span></h3>
     {% if post.totalAmount > "2" %}
-    <h3>კლიმატური ცვლილებების შესამსუბუქებლად საჭიროა 2 ტონაზე ნაკლები გახადოთ თქვენი ნახშირბადის კვალი</h3>
+    <h3>{% trans "კლიმატური ცვლილებების შესამსუბუქებლად აუცილებელია 2 ტონაზე ნაკლები გახადოთ თქვენი ნახშირბადის კვალი" %}</h3>
     {% endif %}
+    <hr style="border-top: 2px solid #eee;" />
     <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <hr style="border-top: 2px solid #eee;" />
     {% for component in post.components %}
       {% if component == post.electricityAmount %}
         {% if post.components.0 == component %}
-        <h1 class="font-weight-bold">{{ forloop.counter }}. ტოპ რჩევა: ეცადეთ დაზოგოთ ენერგია ან/და გამოიყენოთ მწვანე ენერგია</h1>
-        <br />
+        <h3 class="font-weight-bold" style="padding-bottom: 10px;">{{ forloop.counter }}. {% trans "ტოპ რჩევა: ეცადეთ დაზოგოთ ენერგია ან/და გამოიყენოთ მწვანე ენერგია" %}</h3>
         {% else %}
-        <h2>{{ forloop.counter }}. ეცადეთ დაზოგოთ ენერგია ან/და გამოიყენოთ მწვანე ენერგია</h2>
+        <h4 style="padding-bottom: 10px;">{{ forloop.counter }}. {% trans "ეცადეთ დაზოგოთ ენერგია ან/და გამოიყენოთ მწვანე ენერგია" %}</h4>
         {% endif %}
-      {% endif %}
-      {% if component == post.transportationAmount %}
+      {% elif component == post.transportationAmount %}
         {% if post.components.0 == component %}
-        <h1>{{ forloop.counter }}. ტოპ რჩევა: ეცადეთ ავტომობილის, თვითმფრინავისა და მოტოციკლის მაგივრად იმგზავროთ საზოგადო ტრანსპორტით ან/და ველოსიპედით ან ფეხით</h1>
-        <br />
+        <h3 style="padding-bottom: 10px;">{{ forloop.counter }}. {% trans "ტოპ რჩევა: ეცადეთ ავტომობილის, თვითმფრინავისა და მოტოციკლის მაგივრად იმგზავროთ საზოგადო ტრანსპორტით ან/და ველოსიპედით ან ფეხით" %}</h3>
         {% else %}
-        <h2>{{ forloop.counter }}. ეცადეთ ავტომობილის, თვითმფრინავისა და მოტოციკლის მაგივრად იმგზავროთ საზოგადო ტრანსპორტით ან/და ველოსიპედით ან ფეხით</h2>
+        <h4 style="padding-bottom: 10px;">{{ forloop.counter }}. {% trans "ეცადეთ ავტომობილის, თვითმფრინავისა და მოტოციკლის მაგივრად იმგზავროთ საზოგადო ტრანსპორტით ან/და ველოსიპედით ან ფეხით" %}</h4>
         {% endif %}
-      {% endif %}
-      {% if component == post.foodAmount %}
+      {% elif component == post.foodAmount %}
         {% if post.components.0 == component %}
-        <h1>{{ forloop.counter }}. ტოპ რჩევა: ეცადეთ იკვებოთ ორგანული საკვებით, შეამციროთ ხორცის და რძის მიღება, ადგილობრივი წარმოების საკვები შეიძინოთ და არ გადაყაროთ საჭმელი</h1>
-        <br />
+        <h3 style="padding-bottom: 10px;">{{ forloop.counter }}. {% trans "ტოპ რჩევა: ეცადეთ იკვებოთ ორგანული საკვებით, შეამციროთ ხორცის და რძის მიღება, ადგილობრივი წარმოების საკვები შეიძინოთ და არ გადაყაროთ საჭმელი" %}</h3>
         {% else %}
-        <h2>{{ forloop.counter }}. ეცადეთ იკვებოთ ორგანული საკვებით, შეამციროთ ხორცის და რძის მიღება, ადგილობრივი წარმოების საკვები შეიძინოთ და არ გადაყაროთ საჭმელი</h2>
+        <h4 style="padding-bottom: 10px;">{{ forloop.counter }}. {% trans "ეცადეთ იკვებოთ ორგანული საკვებით, შეამციროთ ხორცის და რძის მიღება, ადგილობრივი წარმოების საკვები შეიძინოთ და არ გადაყაროთ საჭმელი" %}</h4>
         {% endif %}
-      {% endif %}
-      {% if component == post.miscAmount %}
+      {% elif component == post.miscAmount %}
         {% if post.components.0 == component %}
-        <h1>{{ forloop.counter }}. ტოპ რჩევა: ეცადეთ რაც შეიძლება ნაკლებად შეიძინოთ ზედმეტი ნივთები</h1>
-        <br />
+        <h3 style="padding-bottom: 10px;">{{ forloop.counter }}. {% trans "ტოპ რჩევა: ეცადეთ რაც შეიძლება ნაკლებად შეიძინოთ ზედმეტი ნივთები" %}</h3>
         {% else %}
-        <h2>{{ forloop.counter }}. ეცადეთ რაც შეიძლება ნაკლებად შეიძინოთ ზედმეტი ნივთები</h2>
+        <h4 style="padding-bottom: 10px;">{{ forloop.counter }}. {% trans "ეცადეთ რაც შეიძლება ნაკლებად შეიძინოთ ზედმეტი ნივთები" %}</h4>
         {% endif %}
       {% endif %}
     {% endfor %}
-    <br />
     {% if not recyclePGM %}
-      <h3>5. ეცადეთ მუდამ გადაამუშაოთ ქაღალდი, მინა და ლითონი</h3>
+      <h4 style="padding-bottom: 10px;">5. {% trans "ეცადეთ მუდამ გადაამუშაოთ ქაღალდი, მინა და ლითონი" %}</h4>
     {% endif %}
     {% if not recyclePlastic and not recyclePGM %}
-      <h3>6. ეცადეთ მუდამ გადაამუშაოთ პლასტმასი</h3>
+      <h4 style="padding-bottom: 10px;">6. {% trans "ეცადეთ მუდამ გადაამუშაოთ პლასტმასი" %}</h4>
     {% endif %}
     {% if not recyclePlastic and recyclePGM %}
-      <h3>5. ეცადეთ მუდამ გადაამუშაოთ პლასტმასი</h3>
+      <h4 style="padding-bottom: 10px;">5. {% trans "ეცადეთ მუდამ გადაამუშაოთ პლასტმასი" %}</h4>
     {% endif %}
   </article>
   <script>

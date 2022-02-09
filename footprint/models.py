@@ -1,25 +1,26 @@
 from django.db import models
 from django.urls import reverse
+from django.utils.translation import ugettext_lazy as _
 
 class electricityChoices(models.IntegerChoices):
-    Small = 3000, 'პატარა ზომის სახლი / ბინა (3000 კვტ/სთ)'
-    Medium = 4800, 'საშუალო ზომის სახლი (4800 კვტ/სთ)'
-    Large = 7000, 'დიდი ზომის სახლი (7000 კვტ/სთ)'
-    Residence = 2000, 'დარბაზული სახლი (2000 კვტ/სთ)'
+    Small = 3000, _('პატარა ზომის სახლი / ბინა (3000 კვტ/სთ)')
+    Medium = 4800, _('საშუალო ზომის სახლი (4800 კვტ/სთ)')
+    Large = 7000, _('დიდი ზომის სახლი (7000 კვტ/სთ)')
+    Residence = 2000, _('დარბაზული სახლი (2000 კვტ/სთ)')
 
 class gasChoices(models.IntegerChoices):
-    Small = 12000, 'პატარა ზომის სახლი / ბინა (12000 კვტ/სთ)'
-    Medium = 18000, 'საშუალო ზომის სახლი (18000 კვტ/სთ)'
-    Large = 27000, 'დიდი ზომის სახლი (27000 კვტ/სთ)'
-    Residence = 5000, 'დარბაზული სახლი (5000 კვტ/სთ)'
+    Small = 12000, _('პატარა ზომის სახლი / ბინა (12000 კვტ/სთ)')
+    Medium = 18000, _('საშუალო ზომის სახლი (18000 კვტ/სთ)')
+    Large = 27000, _('დიდი ზომის სახლი (27000 კვტ/სთ)')
+    Residence = 5000, _('დარბაზული სახლი (5000 კვტ/სთ)')
 
 class heatingGasChoices(models.IntegerChoices):
-    No = 0, 'არა'
-    Yes = 1, 'დიახ'
+    No = 0, _('არა')
+    Yes = 1, _('დიახ')
 
 class electricityGreenChoices(models.IntegerChoices):
-    No = 100, 'არა'
-    Yes = 75, 'დიახ' 
+    No = 100, _('არა')
+    Yes = 75, _('დიახ')
 
 class carsAmountChoices(models.IntegerChoices):
     Zero = 0, '0'
@@ -29,97 +30,97 @@ class carsAmountChoices(models.IntegerChoices):
     Four = 4, '4'
 
 class carSizeChoices(models.IntegerChoices):
-    sportsCar = 35, 'სპორტული მანქანა ან დიდი ჯიპი'
-    smallMediumCar = 46, 'პატარა/საშუალო ზომის ჯიპი ან მინივენი'
-    estateCar = 52, 'პატარა, საშუალო ან დიდი უნივერსალი'
+    sportsCar = 35, _('სპორტული მანქანა ან დიდი ჯიპი')
+    smallMediumCar = 46, _('პატარა/საშუალო ზომის ჯიპი ან მინივენი')
+    estateCar = 52, _('პატარა, საშუალო ან დიდი უნივერსალი')
 
 class carMileageChoices(models.IntegerChoices):
-    lowMileage = 6000, 'დაბალი (10000 კმ)'
-    mediumMileage = 9000, 'საშუალო (15000 კმ)'
-    highMileage = 12000, 'მაღალი (20000 კმ)'
+    lowMileage = 6000, _('დაბალი (10000 კმ)')
+    mediumMileage = 9000, _('საშუალო (15000 კმ)')
+    highMileage = 12000, _('მაღალი (20000 კმ)')
 
 class organicFoodChoices(models.IntegerChoices):
-    neverEat = 7, 'არასდროს'
-    sometimesEat = 5, 'ხანდახან'
-    mostlyEat = 2, 'უმეტესად'
-    alwaysEat = 0, 'ყოველთვის'
+    neverEat = 7, _('არასდროს')
+    sometimesEat = 5, _('ხანდახან')
+    mostlyEat = 2, _('უმეტესად')
+    alwaysEat = 0, _('ყოველთვის')
 
 class meatDairyChoices(models.IntegerChoices):
-    moreThanAverage = 60, 'საშუალოზე მეტს'
-    averageAmount = 40, 'საშუალო რაოდენობას'
-    belowAverage = 25, 'საშუალოზე ნაკლებს'
-    lactoVegetarian = 10, 'არ მივირთმევ ხორცს'
-    vegetarian = 0, 'არ მივირთმევ არც ხორცს და არც რძეს'
+    moreThanAverage = 60, _('საშუალოზე მეტს')
+    averageAmount = 40, _('საშუალო რაოდენობას')
+    belowAverage = 25, _('საშუალოზე ნაკლებს')
+    lactoVegetarian = 10, _('არ მივირთმევ ხორცს')
+    vegetarian = 0, _('არ მივირთმევ არც ხორცს და არც რძეს')
 
 class localFoodChoices(models.IntegerChoices):
-    veryLittle = 5, 'ძალიან მცირე'
-    averageAmount = 3, 'საშუალო'
-    moreThanAverage = 2, 'საშუალოზე მეტი'
-    almostall = 1, 'თითქმის მთლიანად'
+    veryLittle = 5, _('ძალიან მცირე')
+    averageAmount = 3, _('საშუალო')
+    moreThanAverage = 2, _('საშუალოზე მეტი')
+    almostall = 1, _('თითქმის მთლიანად')
 
 class compostChoices(models.IntegerChoices):
-    neverEat = 2, 'არასდროს'
-    sometimesEat = 1, 'ხანდახან'
-    alwaysEat = 0, 'ყოველთვის'
+    neverEat = 2, _('არასდროს')
+    sometimesEat = 1, _('ხანდახან')
+    alwaysEat = 0, _('ყოველთვის')
 
 class packagedChoices(models.IntegerChoices):
-    moreThanAverage = 60, 'დიდი რაოდენობა'
-    averageAmount = 40, 'საშუალო რაოდენობა'
-    belowAverage = 20, 'მცირე რაოდენობა'
-    lactoVegetarian = 5, 'ძალიან მცირე'
+    moreThanAverage = 60, _('დიდი რაოდენობა')
+    averageAmount = 40, _('საშუალო რაოდენობა')
+    belowAverage = 20, _('მცირე რაოდენობა')
+    lactoVegetarian = 5, _('ძალიან მცირე')
 
 class wastedChoices(models.IntegerChoices):
-    moreThanAverage = 148, 'დიდი რაოდენობა'
-    averageAmount = 125, 'საშუალო რაოდენობა'
-    belowAverage = 103, 'მცირე რაოდენობა'
-    lactoVegetarian = 86, 'ძალიან მცირე'
+    moreThanAverage = 148, _('დიდი რაოდენობა')
+    averageAmount = 125, _('საშუალო რაოდენობა')
+    belowAverage = 103, _('მცირე რაოდენობა')
+    lactoVegetarian = 86, _('ძალიან მცირე')
 
 class miscSpendingChoices(models.IntegerChoices):
-    moreThanAverage = 50, 'დიდი რაოდენობა'
-    averageAmount = 34, 'საშუალო რაოდენობა'
-    belowAverage = 24, 'მცირე რაოდენობა'
-    lactoVegetarian = 14, 'ძალიან მცირე'
+    moreThanAverage = 50, _('დიდი რაოდენობა')
+    averageAmount = 34, _('საშუალო რაოდენობა')
+    belowAverage = 24, _('მცირე რაოდენობა')
+    lactoVegetarian = 14, _('ძალიან მცირე')
 
 class recyclePGMChoices(models.IntegerChoices):
-    No = 0, 'არა'
-    Yes = 7, 'დიახ'
+    No = 0, _('არა')
+    Yes = 7, _('დიახ')
 
 class recyclePlasticChoices(models.IntegerChoices):
-    No = 0, 'არა'
-    Yes = 14, 'დიახ'
+    No = 0, _('არა')
+    Yes = 14, _('დიახ')
 
 class Post(models.Model):
-    peopleAmount = models.IntegerField(verbose_name=" რამდენი ადამიანი ცხოვრობს თქვენთან სახლში? (თქვენ ჩათვლით)")
-    electricityUsed = models.IntegerField(blank=True, null=True, choices=electricityChoices.choices, verbose_name=" რა რაოდენობით დენი მოიხმარება თქვენ სახლში?")
-    electricityGreen = models.IntegerField(default=100, choices=electricityGreenChoices.choices, verbose_name=" იყენებთ თუ არა მწვანე ენერგიას?")
-    gasUsed = models.IntegerField(blank=True, null=True, default=0, choices=gasChoices.choices, verbose_name=" რა რაოდენობით გაზი მოიხმარება თქვენ სახლში?")
-    heatingGasUsed = models.BooleanField(default=0, choices=heatingGasChoices.choices, verbose_name=" გამოიყენება თუ არა თქვენ სახლში ზეთი, ქვანახშირი, შეშა ან ჩამოსხმული გაზი გასათბობად?")
-    heatingOilUsed = models.IntegerField(blank=True, null=True, verbose_name=" რა რაოდენობის ზეთი გამოიყენეთ გასული წლის განმავლობაში (ლიტრებში)")
-    coalUsed = models.IntegerField(blank=True, null=True, verbose_name=" რა რაოდენობის ქვანახშირი გამოიყენეთ გასული წლის განმავლობაში (კილოგრამებში)")
-    woodUsed = models.IntegerField(blank=True, null=True, verbose_name=" რა რაოდენობის შეშა გამოიყენეთ გასული წლის განმავლობაში (კილოგრამებში)")
-    bottledGasUsed = models.IntegerField(blank=True, null=True, verbose_name=" რა რაოდენობის ჩამოსხმული გაზი გამოიყენეთ გასული წლის განმავლობაში (კილოგრამებში)")
-    carsAmount = models.IntegerField(default=0, null=True, choices=carsAmountChoices.choices, verbose_name=" რამდენი მანქანაა თქვენ ოჯახში?")
-    carOneSize = models.IntegerField(blank=True, null=True, default=1, choices=carSizeChoices.choices, verbose_name=" მანქანა 1 ზომა:")
-    carOneMileage = models.IntegerField(blank=True, null=True, default=0, choices=carMileageChoices.choices, verbose_name=" მანქანა 1 გარბენი:")
-    carTwoSize = models.IntegerField(blank=True, null=True, default=1, choices=carSizeChoices.choices, verbose_name=" მანქანა 2 ზომა:")
-    carTwoMileage = models.IntegerField(blank=True, null=True, default=0, choices=carMileageChoices.choices, verbose_name=" მანქანა 2 გარბენი:")
-    carThreeSize = models.IntegerField(blank=True, null=True, default=1, choices=carSizeChoices.choices, verbose_name=" მანქანა 3 ზომა:")
-    carThreeMileage = models.IntegerField(blank=True, null=True, default=0, choices=carMileageChoices.choices, verbose_name=" მანქანა 3 გარბენი:")
-    carFourSize = models.IntegerField(blank=True, null=True, default=1, choices=carSizeChoices.choices, verbose_name=" მანქანა 4 ზომა:")
-    carFourMileage = models.IntegerField(blank=True, null=True, default=0, choices=carMileageChoices.choices, verbose_name=" მანქანა 4 გარბენი:")
+    peopleAmount = models.IntegerField(verbose_name=_(" რამდენი ადამიანი ცხოვრობს თქვენთან სახლში? (თქვენ ჩათვლით)"))
+    electricityUsed = models.IntegerField(blank=True, null=True, choices=electricityChoices.choices, verbose_name=_(" რა რაოდენობით დენი მოიხმარება თქვენ სახლში?"))
+    electricityGreen = models.IntegerField(default=100, choices=electricityGreenChoices.choices, verbose_name=_(" იყენებთ მწვანე ენერგიას?"))
+    gasUsed = models.IntegerField(blank=True, null=True, default=0, choices=gasChoices.choices, verbose_name=_(" რა რაოდენობით გაზი მოიხმარება თქვენ სახლში?"))
+    heatingGasUsed = models.BooleanField(default=0, choices=heatingGasChoices.choices, verbose_name=_(" გამოიყენება თქვენ სახლში ზეთი, ქვანახშირი, შეშა ან ჩამოსხმული გაზი გასათბობად?"))
+    heatingOilUsed = models.IntegerField(blank=True, null=True, verbose_name=_(" გამოყენებული ზეთი გასული წლის განმავლობაში (ლიტრებში)"))
+    coalUsed = models.IntegerField(blank=True, null=True, verbose_name=_(" გამოიყენებული ქვანახშირი გასული წლის განმავლობაში (კილოგრამებში)"))
+    woodUsed = models.IntegerField(blank=True, null=True, verbose_name=_(" გამოყენებული შეშა გასული წლის განმავლობაში (კილოგრამებში)"))
+    bottledGasUsed = models.IntegerField(blank=True, null=True, verbose_name=_(" გამოყენებული ჩამოსხმული გაზი გასული წლის განმავლობაში (კილოგრამებში)"))
+    carsAmount = models.IntegerField(default=0, null=True, choices=carsAmountChoices.choices, verbose_name=_(" რამდენი მანქანაა თქვენ ოჯახში?"))
+    carOneSize = models.IntegerField(blank=True, null=True, default=1, choices=carSizeChoices.choices, verbose_name=_(" მანქანა 1 ზომა:"))
+    carOneMileage = models.IntegerField(blank=True, null=True, default=0, choices=carMileageChoices.choices, verbose_name=_(" მანქანა 1 გარბენი:"))
+    carTwoSize = models.IntegerField(blank=True, null=True, default=1, choices=carSizeChoices.choices, verbose_name=_(" მანქანა 2 ზომა:"))
+    carTwoMileage = models.IntegerField(blank=True, null=True, default=0, choices=carMileageChoices.choices, verbose_name=_(" მანქანა 2 გარბენი:"))
+    carThreeSize = models.IntegerField(blank=True, null=True, default=1, choices=carSizeChoices.choices, verbose_name=_(" მანქანა 3 ზომა:"))
+    carThreeMileage = models.IntegerField(blank=True, null=True, default=0, choices=carMileageChoices.choices, verbose_name=_(" მანქანა 3 გარბენი:"))
+    carFourSize = models.IntegerField(blank=True, null=True, default=1, choices=carSizeChoices.choices, verbose_name=_(" მანქანა 4 ზომა:"))
+    carFourMileage = models.IntegerField(blank=True, null=True, default=0, choices=carMileageChoices.choices, verbose_name=_(" მანქანა 4 გარბენი:"))
 
-    organicFoodAmount = models.DecimalField(max_digits=6, null=True, decimal_places=2, blank=True, default=7, choices=organicFoodChoices.choices, verbose_name=" რა რაოდენობით მიირთმევთ ორგანულ საკვებს")
-    meatDairyAmount = models.DecimalField(max_digits=6, null=True, decimal_places=2, blank=True, default=40, choices=meatDairyChoices.choices, verbose_name=" რა რაოდენობით მიირთმევთ ხორცს ან/და რძეს?")
-    localFoodAmount = models.DecimalField(max_digits=6, null=True, decimal_places=2, default=3, choices=localFoodChoices.choices, verbose_name=" თქვენი საკვების რა ნაწილია წარმოებული ადგილობრივად?")
-    packagedFoodAmount = models.DecimalField(max_digits=6, null=True, decimal_places=2, blank=True, default=0, choices=packagedChoices.choices, verbose_name=" თქვენი საკვების რა ნაწილია შეფუთული?")
-    compostFoodAmount = models.DecimalField(max_digits=6, null=True, decimal_places=2, default=0.2, choices=compostChoices.choices, verbose_name=" რამდენად უკეთებთ კომპოსტირებას ნარჩენ და გამოუყენებელ საკვებს?")
-    foodWasteAmount = models.DecimalField(max_digits=6, null=True, decimal_places=2, default=0.5, choices=wastedChoices.choices, verbose_name=" რა რაოდენობით საკვებს ფლანგავთ?")
-    mileageEachWeekBus = models.IntegerField(blank=True, null=True, verbose_name=" კვირაში რამდენ კილომეტრს მგზავრობთ ავტობუსით?")
-    mileageEachWeekTrain = models.IntegerField(blank=True, null=True, verbose_name=" კვირაში რამდენ კილომეტრს მგზავრობთ მატარებლით?")
-    hoursSpentFlying = models.IntegerField(blank=True, null=True, verbose_name=" წელიწადში რამდენ საათს ატარებთ თვითმფრინავში?")
-    miscSpending = models.DecimalField(max_digits=6, null=True, decimal_places=2, default=34, choices=miscSpendingChoices.choices, verbose_name=" რა რაოდენობით ფულს ხარჯავთ სხვადასხვა ხარჯებში?")
-    recyclePGM = models.DecimalField(max_digits=6, null=True, decimal_places=2, blank=True, default=0, choices=recyclePGMChoices.choices, verbose_name=" აკეთებთ თუ არა ქაღალდს, მინას და ლითონს გადამუშავებას?")
-    recyclePlastic = models.DecimalField(max_digits=6, null=True, decimal_places=2, blank=True, default=0, choices=recyclePlasticChoices.choices, verbose_name=" აკეთებთ თუ არა პლასტმასის გადამუშავებას გარდა პოლიეთილენის პარკებისა?")
+    organicFoodAmount = models.DecimalField(max_digits=6, null=True, decimal_places=2, blank=True, default=7, choices=organicFoodChoices.choices, verbose_name=_(" რა რაოდენობით მიირთმევთ ორგანულ საკვებს"))
+    meatDairyAmount = models.DecimalField(max_digits=6, null=True, decimal_places=2, blank=True, default=40, choices=meatDairyChoices.choices, verbose_name=_(" რა რაოდენობით მიირთმევთ ხორცს ან/და რძეს?"))
+    localFoodAmount = models.DecimalField(max_digits=6, null=True, decimal_places=2, default=3, choices=localFoodChoices.choices, verbose_name=_(" თქვენი საკვების რა ნაწილია წარმოებული ადგილობრივად?"))
+    packagedFoodAmount = models.DecimalField(max_digits=6, null=True, decimal_places=2, blank=True, default=0, choices=packagedChoices.choices, verbose_name=_(" თქვენი საკვების რა ნაწილია შეფუთული?"))
+    compostFoodAmount = models.DecimalField(max_digits=6, null=True, decimal_places=2, default=0.2, choices=compostChoices.choices, verbose_name=_(" რამდენად უკეთებთ კომპოსტირებას ნარჩენ და გამოუყენებელ საკვებს?"))
+    foodWasteAmount = models.DecimalField(max_digits=6, null=True, decimal_places=2, default=0.5, choices=wastedChoices.choices, verbose_name=_(" რა რაოდენობით საკვებს ფლანგავთ?"))
+    mileageEachWeekBus = models.IntegerField(blank=True, null=True, verbose_name=_(" კვირაში რამდენ კილომეტრს მგზავრობთ ავტობუსით?"))
+    mileageEachWeekTrain = models.IntegerField(blank=True, null=True, verbose_name=_(" კვირაში რამდენ კილომეტრს მგზავრობთ მატარებლით?"))
+    hoursSpentFlying = models.IntegerField(blank=True, null=True, verbose_name=_(" წელიწადში რამდენ საათს ატარებთ თვითმფრინავში?"))
+    miscSpending = models.DecimalField(max_digits=6, null=True, decimal_places=2, default=34, choices=miscSpendingChoices.choices, verbose_name=_(" რა რაოდენობას ხარჯავთ სხვადასხვა ხარჯებში?"))
+    recyclePGM = models.DecimalField(max_digits=6, null=True, decimal_places=2, blank=True, default=0, choices=recyclePGMChoices.choices, verbose_name=_(" ქაღალდს, მინას და ლითონს ამუშავებთ?"))
+    recyclePlastic = models.DecimalField(max_digits=6, null=True, decimal_places=2, blank=True, default=0, choices=recyclePlasticChoices.choices, verbose_name=_(" პლასტმასს ამუშავებთ გარდა პოლიეთილენის პარკებისა?"))
     totalAmount = 0
     planetsAmount = 0
     electricityAmount = 0

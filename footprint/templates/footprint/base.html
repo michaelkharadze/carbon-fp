@@ -1,4 +1,8 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as current_language %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +13,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="{% static 'footprint/main.js' %}"></script>
     <link href="{% static 'footprint/main.css' %}" rel="stylesheet" type="text/css">
-    {% if title %}
-        <title>{{ title }} | ნახშირბადის კვალი</title>
-    {% else %}
-        <title>ნახშირბადის კვალი</title>
-    {% endif %}
+    <title>{% trans "ნახშირბადის კვალი" %}</title>
 </head>
 <body>
     <nav class="navbar navbar-inverse">
@@ -26,36 +25,25 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>                        
             </button>
-            <a class="navbar-brand" href="#">ნახშირბადის კვალი</a>
+            <a class="navbar-brand" href="{% url 'footprint-home' %}">{% trans "ნახშირბადის კვალი" %}</a>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-              {% if homePage %}
-              <li class="active"><a href="{% url 'footprint-home' %}">მთავარი</a></li>
-              <li><a href="{% url 'footprint-about' %}">შესახებ</a></li>
-              <li><a href="{% url 'footprint-contact' %}">კონტაქტი</a></li>
-              {% endif %}
-              {% if aboutPage %}
-              <li><a href="{% url 'footprint-home' %}">მთავარი</a></li>
-              <li class="active"><a href="{% url 'footprint-about' %}">შესახებ</a></li>
-              <li><a href="{% url 'footprint-contact' %}">კონტაქტი</a></li>
-              {% endif %}
-              {% if contactPage %}
-              <li><a href="{% url 'footprint-home' %}">მთავარი</a></li>
-              <li><a href="{% url 'footprint-about' %}">შესახებ</a></li>
-              <li class="active"><a href="{% url 'footprint-contact' %}">კონტაქტი</a></li>
-              {% endif %}
-              {% if not homePage and not aboutPage and not contactPage %}
-              <li class="active"><a href="{% url 'footprint-home' %}">მთავარი</a></li>
-              <li><a href="{% url 'footprint-about' %}">შესახებ</a></li>
-              <li><a href="{% url 'footprint-contact' %}">კონტაქტი</a></li>
-              {% endif %}
+              <li><a href="{% url 'footprint-home' %}">{% trans "მთავარი" %}</a></li>
               <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">წყაროები <span class="caret"></span></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">{% trans "წყაროები" %} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Page 1-1</a></li>
-                  <li><a href="#">Page 1-2</a></li>
-                  <li><a href="#">Page 1-3</a></li>
+                  <li><a target="_blank" href="https://www.carbonindependent.org/">{% trans "წყარო" %}</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">{% trans "Language" %} <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  {% if current_language == 'en' %}
+                    <li> <a href="/ka/">ქართული</a> </li>
+                  {% else %}
+                    <li> <a href="/en/">English</a> </li>
+                  {% endif %}
                 </ul>
               </li>
             </ul>
